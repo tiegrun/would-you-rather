@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/would-you-rather/static/css/main.d23cd2a7.css",
+    "main.js": "/would-you-rather/static/js/main.cca913f9.js",
+    "index.html": "/would-you-rather/index.html",
+    "main.d23cd2a7.css.map": "/would-you-rather/static/css/main.d23cd2a7.css.map",
+    "main.cca913f9.js.map": "/would-you-rather/static/js/main.cca913f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d23cd2a7.css",
+    "static/js/main.cca913f9.js"
+  ]
+}
