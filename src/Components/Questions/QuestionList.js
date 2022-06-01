@@ -58,8 +58,6 @@ function QuestionList({userAnswerQuestionType, isLogged, loggedUser}) {
     }
 
   }, [isLogged])
-
-  console.log(isAllowed)
   
   return (
 
