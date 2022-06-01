@@ -1,0 +1,12 @@
+.questionOrAnswer{
+  display: flex;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.loading{
+  display: flex;
+  font-size: .98rem;
+  font-weight: bold;
+}
+

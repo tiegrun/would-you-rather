@@ -1,0 +1,56 @@
+.userArea{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  /* border: 1px solid black; */
+}
+
+.unSelected{
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.selectedUserDescription{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid green; */
+}
+
+.selectedUserProfile{
+  list-style-type: none;
+  /* border: 1px solid red; */
+}
+
+.selectedUserInfo{
+  height: 4rem;
+  justify-content: center;
+  /* border: 2px solid red; */
+}
+
+.UselectedUserNav, .selectedUserQuestions{
+  width: 55%;
+  height: auto;
+  font-size: 1.4rem;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.logOutBtn{
+  font-size: 1rem;
+  /* border: 1px solid red; */
+  width: 6rem;
+  border-radius: .3rem;
+  padding: .3rem;
+}
+
+.logOutBtn:hover {
+  background-color: rgb(204, 136, 9);
+  box-shadow: 0px 15px 20px rgba(90, 63, 6, 0.4);
+  color: #fff;
+  transform: translateY(-2px);
+}
