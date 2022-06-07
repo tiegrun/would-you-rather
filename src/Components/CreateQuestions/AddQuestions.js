@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import "../../Style/ProfileQuestionList.css";
 import { useNavigate } from "react-router-dom";
 import Error404Page from "../Error404Page";
+import SelectedUserProfilePage from "../SelectUserComponent/SelectedUserProfilePage";
 
 function AddQuestions({addQuestionAsync, loggedUser, isLogged}) {
 
@@ -86,8 +87,6 @@ function AddQuestions({addQuestionAsync, loggedUser, isLogged}) {
     }
   }
 
-  console.log(isAllowed)
-
   return (
     <Fragment>
       { isAllowed 
@@ -100,6 +99,7 @@ function AddQuestions({addQuestionAsync, loggedUser, isLogged}) {
               <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
               <button className='simpleBtn' onClick={toRoute} name={`/leaderboard`}>leaderboard</button> |
             </div>
+            <SelectedUserProfilePage />
             <div className='subSection'>
               <div className="profileQuestionList">
                 <form>

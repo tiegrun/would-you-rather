@@ -3,6 +3,7 @@ import "../../Style/LeaderBoard.css";
 import {useState} from "react";
 import LeaderBoardUserList from "./LeaderBoardUserList";
 import { useNavigate } from "react-router-dom";
+import SelectedUserProfilePage from "../SelectUserComponent/SelectedUserProfilePage";
 
 function Leaderboard() {
 
@@ -33,7 +34,11 @@ function Leaderboard() {
         <button className={btnHandler ? 'simpleBtn simpleBtnActive' : 'simpleBtn'} onClick={handleByAnswer}>By Answers</button> |
         <button className={!btnHandler ? 'simpleBtn simpleBtnActive' : 'simpleBtn'} onClick={handleByQuestion}>By Questions</button>
       </div>
-      <LeaderBoardUserList chooseAnswerOrQuestion={btnHandler}/>
+      <div className='LeadProfile'>
+        <SelectedUserProfilePage />
+        <LeaderBoardUserList chooseAnswerOrQuestion={btnHandler}/>
+      </div>
+      
     </div>
   )
 }

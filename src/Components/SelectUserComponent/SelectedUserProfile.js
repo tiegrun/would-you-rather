@@ -3,8 +3,9 @@ import {mapStateToProps, mapDispatchToProps} from '../../Store/storeProps';
 import {connect} from "react-redux";
 import ProfileQuestionList from "../Questions/ProfileQuestionList";
 import { useNavigate } from "react-router-dom";
+import SelectedUserProfilePage from "./SelectedUserProfilePage";
 
-function SelectedUserProfile({loggedUser, getUserAnswerQuestionTypeAsync, logInUserAsync, userList}) {
+function SelectedUserProfile({getUserAnswerQuestionTypeAsync}) {
 
   const [loadAnswered, setLoadAnswered] = useState(false);
 
@@ -22,7 +23,7 @@ function SelectedUserProfile({loggedUser, getUserAnswerQuestionTypeAsync, logInU
 
     }
     
-  },[loadAnswered, userList])
+  },[loadAnswered])
 
   const navigate = useNavigate();
 
@@ -50,20 +51,6 @@ function SelectedUserProfile({loggedUser, getUserAnswerQuestionTypeAsync, logInU
     }
   }
 
-  const handleLogOut =(e)=>{
-
-    localStorage.setItem('userId', '');
-    localStorage.setItem('answered', '');
-    localStorage.setItem('unanswered', '');
-    localStorage.setItem('answertype', '');
-
-    logInUserAsync([]);
-    setLoadAnswered(false);
-    
-    return toRoute(e);
-
-  }
-
   return (
     <div className='Section'>
       <div className='pageHeader'>
@@ -86,30 +73,7 @@ function SelectedUserProfile({loggedUser, getUserAnswerQuestionTypeAsync, logInU
           </div>
         </div>
       <div className='userArea'>
-        <ul className='selectedUserProfile'>
-          {loggedUser.map(user=>
-            <li key={user.id} className="subSection">
-              <div className='profile'>
-                <div className='imagePlace'>
-                  <img src={user.avatarURL} alt="avatar" />
-                </div>
-                <div className='selectedUserDescription'>
-                  <div className='profileInfo selectedUserInfo'>
-                    <p>
-                      <b>Name :</b>
-                      <span className='profileDetails'>
-                        {user.name}
-                      </span>
-                    </p> 
-                  </div>
-                  <button className='simpleBtn logOutBtn' onClick={handleLogOut} name={`/`}>
-                    Exit
-                  </button>
-                </div>
-              </div>
-            </li>
-          )}
-        </ul>
+        <SelectedUserProfilePage />
         <div className='subSection selectedUserQuestions'>
           <ProfileQuestionList/>
         </div>

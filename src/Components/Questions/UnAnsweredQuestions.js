@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import { useParams } from "react-router-dom";
 import '../../Style/Questions.css';
 import QuestionNavButtons from "./QuestionNavButtons";
-import ChooseOption from "../AnswerTheQuestion/ChooseOption"
+import ChooseOption from "../AnswerTheQuestion/ChooseOption";
 
 function UnAnsweredQuestions({userList, userUnansweredQuestionList, getUserListAsync, getUserUnansweredQuestionsAsync}) {
 

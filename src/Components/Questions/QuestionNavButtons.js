@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
+import SelectedUserProfilePage from "../SelectUserComponent/SelectedUserProfilePage";
 
 function QuestionNavButtons() {
 
@@ -12,13 +13,16 @@ function QuestionNavButtons() {
   }
 
   return (
-    <div className="btnSection">
-      | <button className="simpleBtn" name={`/`} onClick={handleRoute}>
-        Home
-      </button> |
-      <button className="simpleBtn" name={`/leaderboard`} onClick={handleRoute}>
-        LeaderBoard
-      </button> |
+    <div>
+      <div className="btnSection">
+        | <button className="simpleBtn" name={`/`} onClick={handleRoute}>
+          Home
+        </button> |
+        <button className="simpleBtn" name={`/leaderboard`} onClick={handleRoute}>
+          LeaderBoard
+        </button> |
+      </div>
+      <SelectedUserProfilePage />
     </div>
   )
 }
