@@ -40,7 +40,6 @@ function App({isLogged}) {
         </div>
         <Routes>
           <Route exact path='/' element={<SelectUserList />}/>  
-
           {isAllowed 
             ?
               <Fragment>
@@ -51,7 +50,6 @@ function App({isLogged}) {
             :
               <Route path="/*"  element={<Error404Page />}/>
           }
-          
         </Routes>
       </div>  
     </BrowserRouter>

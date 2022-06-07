@@ -1,12 +1,11 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, {Fragment, useState} from 'react';
 import {mapStateToProps, mapDispatchToProps} from '../../Store/storeProps';
 import {connect} from "react-redux";
 import "../../Style/ProfileQuestionList.css";
 import { useNavigate } from "react-router-dom";
-import Error404Page from "../Error404Page";
 import SelectedUserProfilePage from "../SelectUserComponent/SelectedUserProfilePage";
 
-function AddQuestions({addQuestionAsync, loggedUser, isLogged}) {
+function AddQuestions({addQuestionAsync, loggedUser}) {
 
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
