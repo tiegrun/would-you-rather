@@ -31,6 +31,7 @@ function Leaderboard() {
       </div>   
       <div className='btnSection'>
         <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
+        <button className='simpleBtn' onClick={toRoute} name={`/add`}>Create A New Poll</button> |
         <button className={btnHandler ? 'simpleBtn simpleBtnActive' : 'simpleBtn'} onClick={handleByAnswer}>By Answers</button> |
         <button className={!btnHandler ? 'simpleBtn simpleBtnActive' : 'simpleBtn'} onClick={handleByQuestion}>By Questions</button>
       </div>

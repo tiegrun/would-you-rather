@@ -21,6 +21,9 @@ function QuestionNavButtons() {
         <button className="simpleBtn" name={`/leaderboard`} onClick={handleRoute}>
           LeaderBoard
         </button> |
+        <button className='simpleBtn' name={`/add`} onClick={handleRoute}>
+          Create A New Poll
+        </button> |
       </div>
       <SelectedUserProfilePage />
     </div>
