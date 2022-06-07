@@ -1,11 +1,36 @@
+import React, {useState, useEffect, Fragment} from 'react';
 import '../Style/App.css';
+import {mapStateToProps, mapDispatchToProps} from '../Store/storeProps';
+import {connect} from "react-redux";
 import SelectUserList from './SelectUserComponent/SelectUserList';
 import Leaderboard from './LeaderBoardComponent/LeaderBoard';
 import QuestionList from './Questions/QuestionList';
 import AddQuestions from './CreateQuestions/AddQuestions'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Error404Page from "./Error404Page";
 
-function App() {
+function App({isLogged}) {
+
+  const [isAllowed, setIsAllowed] = useState(false);
+  
+
+  useEffect(()=>{
+    const userId = localStorage.getItem('userId');
+
+    if(userId!==""){
+      
+      setIsAllowed(true)
+
+    }
+    else{
+
+      setIsAllowed(false)
+
+    }
+
+  }, [localStorage.getItem('userId'), isLogged])
+
+  console.log(isAllowed)
 
   return (
     <BrowserRouter>
@@ -15,14 +40,23 @@ function App() {
         </div>
         <Routes>
           <Route exact path='/' element={<SelectUserList />}/>  
-          <Route exact path="/leaderboard"  element={<Leaderboard />}/>
-          <Route path="/*"  element={<QuestionList />}/>
-          <Route path="/add"  element={<AddQuestions />}/>
+
+          {isAllowed 
+            ?
+              <Fragment>
+                <Route exact path="/leaderboard"  element={<Leaderboard />}/>
+                <Route path="/*"  element={<QuestionList />}/>
+                <Route path="/add"  element={<AddQuestions />}/>
+              </Fragment>
+            :
+              <Route path="/*"  element={<Error404Page />}/>
+          }
+          
         </Routes>
       </div>  
     </BrowserRouter>
   )
 }
 
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
