@@ -16,8 +16,8 @@ function Error404Page() {
       <div className='pageHeader'>
         <h2>This page does not exist</h2>
       </div>   
-      <div className='btnSection'> |
-        <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
+      <div className='btnSection'>
+        <button className='simpleBtn' onClick={toRoute} name={`/`}>Please Sign In</button>
       </div>
       <div className='subSection'>
         <div className="profileQuestionList">

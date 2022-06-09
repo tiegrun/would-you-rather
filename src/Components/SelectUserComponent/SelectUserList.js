@@ -50,6 +50,8 @@ function SelectUserList({userList, getUserListAsync, logInUserAsync, isLoggedAsy
     
   }
 
+  console.log(selectedUserId)
+
   return (
     
       <Fragment>

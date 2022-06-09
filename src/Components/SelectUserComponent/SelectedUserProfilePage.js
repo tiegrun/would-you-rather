@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import {mapStateToProps, mapDispatchToProps} from '../../Store/storeProps';
 import {connect} from "react-redux";
 import { useNavigate } from "react-router-dom";
+import SelectUserList from './SelectUserList';
 
 function SelectedUserProfilePage({logInUserAsync, loggedUser}) {
 
@@ -31,7 +32,7 @@ function SelectedUserProfilePage({logInUserAsync, loggedUser}) {
     <Fragment>
         {loggedUser==="No User" 
           ? 
-          console.log('haha')
+            <SelectUserList />
           :
             <ul className='selectedUserProfile'>
               {loggedUser.map(user=>
