@@ -6,7 +6,7 @@ Would you rather refers to a game where participants must choose between two cha
 
 ## Installation Instructions
 
-* Bullet list
+* install project dependencies with 
 
 In the project directory, you can run:
 
