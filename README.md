@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Would you rather refers to a game where participants must choose between two challenging scenarios.
 
-## Available Scripts
+## Installation Instructions
 
 In the project directory, you can run:
 
