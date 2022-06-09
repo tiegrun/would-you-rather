@@ -6,9 +6,9 @@ Would you rather refers to a game where participants must choose between two cha
 
 ## Installation Instructions
 
-* install project dependencies with ### `npm install`
-* start development server with ### `npm start`
-* open your browser and type url ### `localhost:3000`
+* install project dependencies with `###npm install`
+* start development server with `###npm start`
+* open your browser and type url `###localhost:3000`
 
 In the project directory, you can run:
 
