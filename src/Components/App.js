@@ -30,8 +30,6 @@ function App({isLogged}) {
 
   }, [localStorage.getItem('userId'), isLogged])
 
-  console.log(isAllowed)
-
   return (
     <BrowserRouter>
       <div className="App">
