@@ -6,6 +6,8 @@ Would you rather refers to a game where participants must choose between two cha
 
 ## Installation Instructions
 
+* Bullet list
+
 In the project directory, you can run:
 
 ### `npm start`
