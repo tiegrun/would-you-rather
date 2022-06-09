@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Would you rather refers to a game where participants must choose between two challenging scenarios.
+`Would you rather` refers to a game where participants must choose between two challenging scenarios.
 
 ## Installation Instructions:
 
