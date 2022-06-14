@@ -35,12 +35,18 @@ function ProfileQuestionList({loggedUser, questionList,  getQuestionListAsync, g
 
       const loggedUserId = loggedUser[0].id;
 
+      const orderByTimeStamp = (a, b) => { 
+
+        return b.timestamp - a.timestamp
+
+      }
+
       const questionOptionsVotes = questionList.map(question=>{
 
         const userVotedOptions = loggedUser[0].answers;
 
           if (Object.keys(userVotedOptions).includes(question.id)){
-            
+
             return {
               id: question.id,
               optionOneText: question.optionOne.text, 
@@ -48,6 +54,7 @@ function ProfileQuestionList({loggedUser, questionList,  getQuestionListAsync, g
               optionTwoText: question.optionTwo.text,
               optionTwoVotes: question.optionTwo.votes,
               answer: userVotedOptions[question.id],
+              timestamp: question.timestamp,
             }
           }
           else{
@@ -58,11 +65,12 @@ function ProfileQuestionList({loggedUser, questionList,  getQuestionListAsync, g
               optionOneVotes: question.optionOne.votes,
               optionTwoText: question.optionTwo.text,
               optionTwoVotes: question.optionTwo.votes,
-              createdBy: question.author
+              createdBy: question.author,
+              timestamp: question.timestamp,
             }
           }                   
         }  
-      )
+      ).sort(orderByTimeStamp);
 
       const answeredQuestions = questionOptionsVotes.filter(options=>{
 
