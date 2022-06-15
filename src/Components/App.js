@@ -64,7 +64,7 @@ const renderAppComponent = () => {
             <Route exact path="/leaderboard"  element={<Leaderboard />}/>
             <Route path="/*"  element={<QuestionList />}/>
             <Route path="/add"  element={<AddQuestions />}/>
-            <Route path="/*"  element={<Error404Page />}/>
+            {/* <Route path="/*"  element={<Error404Page />}/> */}
         </Routes>
       </div>  
     </BrowserRouter>

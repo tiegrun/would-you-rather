@@ -90,31 +90,31 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
         ?
           <SelectedUserProfilePage />
         :
-        <Fragment>
-          <div className='pageHeader'>
-            <h2>Create A Question</h2>
-          </div>   
-          <div className='btnSection'> |
-            <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
-            <button className='simpleBtn' onClick={toRoute} name={`/leaderboard`}>leaderboard</button> |
-          </div>
-          <SelectedUserProfilePage />
-          <div className='subSection'>
-            <div className="profileQuestionList">
-              <form>
-                <label>Would you rather 
-                  <input type="text" value={optionOne} className='inputFields' minLength="1" maxLength = "160" placeholder='Option One' onChange={handleOptions} name="optionOne"/>
-                </label>
-                <label>or
-                  <input type="text" value={optionTwo} className='inputFields' minLength="1" maxLength = "160" placeholder='Option Two' onChange={handleOptions} name="optionTwo"/>
-                  ?
-                </label>
-                <button type="submit" className="simpleBtn addQuestionBtn" onClick={addQuestion} name={`/`}>Add This Question</button>
-              </form>
+          <Fragment>
+            <div className='pageHeader'>
+              <h2>Create A Question</h2>
+            </div>   
+            <div className='btnSection'> |
+              <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
+              <button className='simpleBtn' onClick={toRoute} name={`/leaderboard`}>leaderboard</button> |
             </div>
-            {!checkOptions ? <div className='subSection'>It Is Not Correct</div> : <Fragment></Fragment>}
-          </div>
-        </Fragment>
+            <SelectedUserProfilePage />
+            <div className='subSection'>
+              <div className="profileQuestionList">
+                <form>
+                  <label>Would you rather 
+                    <input type="text" value={optionOne} className='inputFields' minLength="1" maxLength = "160" placeholder='Option One' onChange={handleOptions} name="optionOne"/>
+                  </label>
+                  <label>or
+                    <input type="text" value={optionTwo} className='inputFields' minLength="1" maxLength = "160" placeholder='Option Two' onChange={handleOptions} name="optionTwo"/>
+                    ?
+                  </label>
+                  <button type="submit" className="simpleBtn addQuestionBtn" onClick={addQuestion} name={`/`}>Add This Question</button>
+                </form>
+              </div>
+              {!checkOptions ? <div className='subSection'>It Is Not Correct</div> : <Fragment></Fragment>}
+            </div>
+          </Fragment>
       } 
     </div> 
   )
