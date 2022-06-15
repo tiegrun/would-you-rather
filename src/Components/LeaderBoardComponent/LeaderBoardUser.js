@@ -1,9 +1,9 @@
-import React from 'react'
+import React , {Fragment} from 'react'
 
 function LeaderBoardUser({answersOrQuestions}) {
   
   return (
-    <React.Fragment>
+    <Fragment>
       {answersOrQuestions!=="Loading" 
         ? answersOrQuestions.map(user=>
           <li key={user.id} className="subSection">
@@ -33,10 +33,9 @@ function LeaderBoardUser({answersOrQuestions}) {
               </div>
             </div>
           </li>) 
-        : <div className='loading'>
-          "... Loading"
-      </div>}
-    </React.Fragment>
+        : <Fragment>
+      </Fragment>}
+    </Fragment>
   )
 }
 

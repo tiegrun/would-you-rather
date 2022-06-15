@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {mapStateToProps, mapDispatchToProps} from '../../Store/storeProps';
 import {connect} from "react-redux";
 import "../../Style/ProfileQuestionList.css";
@@ -10,6 +10,26 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
   const [optionOne, setOptionOne] = useState("");
   const [optionTwo, setOptionTwo] = useState("");
   const [checkOptions, setCheckOptions] = useState(true);
+
+  const [loginAgain, setLoginAgain] = useState(true);
+
+  const userIdByStorage = localStorage.getItem('userId');
+  const userIdByRedux = localStorage.getItem('userId');
+
+  useEffect(()=>{
+
+    if(userIdByStorage === "" || userIdByRedux === undefined){
+
+      setLoginAgain(true)
+
+    }
+    else{
+
+      setLoginAgain(false)
+
+    }
+
+  },[localStorage.getItem('userId'), loggedUser])
 
   let navigate = useNavigate();
 
@@ -65,29 +85,37 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
 
   return (
     <div className='Section LeaderBoard'>
-      <div className='pageHeader'>
-        <h2>Create A Question</h2>
-      </div>   
-      <div className='btnSection'> |
-        <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
-        <button className='simpleBtn' onClick={toRoute} name={`/leaderboard`}>leaderboard</button> |
-      </div>
-      <SelectedUserProfilePage />
-      <div className='subSection'>
-        <div className="profileQuestionList">
-          <form>
-            <label>Would you rather 
-              <input type="text" value={optionOne} className='inputFields' minLength="1" maxLength = "160" placeholder='Option One' onChange={handleOptions} name="optionOne"/>
-            </label>
-            <label>or
-              <input type="text" value={optionTwo} className='inputFields' minLength="1" maxLength = "160" placeholder='Option Two' onChange={handleOptions} name="optionTwo"/>
-              ?
-            </label>
-            <button type="submit" className="simpleBtn addQuestionBtn" onClick={addQuestion} name={`/`}>Add This Question</button>
-          </form>
-        </div>
-        {!checkOptions ? <div className='subSection'>It Is Not Correct</div> : <Fragment></Fragment>}
-      </div>
+      
+      {loginAgain 
+        ?
+          <SelectedUserProfilePage />
+        :
+        <Fragment>
+          <div className='pageHeader'>
+            <h2>Create A Question</h2>
+          </div>   
+          <div className='btnSection'> |
+            <button className='simpleBtn' onClick={toRoute} name={`/`}>Home</button> |
+            <button className='simpleBtn' onClick={toRoute} name={`/leaderboard`}>leaderboard</button> |
+          </div>
+          <SelectedUserProfilePage />
+          <div className='subSection'>
+            <div className="profileQuestionList">
+              <form>
+                <label>Would you rather 
+                  <input type="text" value={optionOne} className='inputFields' minLength="1" maxLength = "160" placeholder='Option One' onChange={handleOptions} name="optionOne"/>
+                </label>
+                <label>or
+                  <input type="text" value={optionTwo} className='inputFields' minLength="1" maxLength = "160" placeholder='Option Two' onChange={handleOptions} name="optionTwo"/>
+                  ?
+                </label>
+                <button type="submit" className="simpleBtn addQuestionBtn" onClick={addQuestion} name={`/`}>Add This Question</button>
+              </form>
+            </div>
+            {!checkOptions ? <div className='subSection'>It Is Not Correct</div> : <Fragment></Fragment>}
+          </div>
+        </Fragment>
+      } 
     </div> 
   )
 }

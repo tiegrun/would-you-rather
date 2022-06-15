@@ -37,6 +37,9 @@ function Leaderboard() {
       </div>
       <div className='LeadProfile'>
         <SelectedUserProfilePage />
+        <div>
+          <h2>Leader List</h2>
+        </div>
         <LeaderBoardUserList chooseAnswerOrQuestion={btnHandler}/>
       </div>
       
