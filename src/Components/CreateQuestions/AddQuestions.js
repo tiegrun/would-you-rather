@@ -14,7 +14,7 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
   const [loginAgain, setLoginAgain] = useState(true);
 
   const userIdByStorage = localStorage.getItem('userId');
-  const userIdByRedux = localStorage.getItem('userId');
+  const userIdByRedux = loggedUser[0].id;
 
   useEffect(()=>{
 
@@ -82,6 +82,8 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
       toRoute(e);
     }
   }
+
+  console.log(userIdByStorage, userIdByRedux)
 
   return (
     <div className='Section LeaderBoard'>

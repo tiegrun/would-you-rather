@@ -10,7 +10,7 @@ function Leaderboard({loggedUser}) {
   const [loginAgain, setLoginAgain] = useState(true);
 
   const userIdByStorage = localStorage.getItem('userId');
-  const userIdByRedux = localStorage.getItem('userId');
+  const userIdByRedux = loggedUser[0].id;
 
   useEffect(()=>{
 
