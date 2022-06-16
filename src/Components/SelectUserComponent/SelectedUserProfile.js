@@ -5,25 +5,41 @@ import ProfileQuestionList from "../Questions/ProfileQuestionList";
 import { useNavigate } from "react-router-dom";
 import SelectedUserProfilePage from "./SelectedUserProfilePage";
 
-function SelectedUserProfile({getUserAnswerQuestionTypeAsync}) {
+function SelectedUserProfile({getUserAnswerQuestionTypeAsync, userAnswerQuestionType}) {
 
   const [loadAnswered, setLoadAnswered] = useState(false);
+  const getAnswerTypeSLocalStorage = localStorage.getItem('answertype');
 
   useEffect(()=>{
 
-    if(!loadAnswered){
+    if(userAnswerQuestionType!=="answered"){
+      
+      if(loadAnswered && getAnswerTypeSLocalStorage==="answered"){
 
-      getUserAnswerQuestionTypeAsync("unanswered");
-      localStorage.setItem('answertype', 'unanswered');
+        localStorage.setItem('answertype', 'answered');
+        getUserAnswerQuestionTypeAsync("answered");
 
+      }
     }
     else{
 
-      getUserAnswerQuestionTypeAsync("answered")
+      if(loadAnswered && getAnswerTypeSLocalStorage==="answered"){
 
+        localStorage.setItem('answertype', 'answered');
+        getUserAnswerQuestionTypeAsync("answered");
+
+      }
+      else{
+
+        localStorage.setItem('answertype', 'unanswered');
+        getUserAnswerQuestionTypeAsync("unanswered");
+
+      }
     }
     
-  },[loadAnswered])
+  },[localStorage.getItem('answertype'), userAnswerQuestionType])
+
+  // console.log(loadAnswered, userAnswerQuestionType, getAnswerTypeSLocalStorage);
 
   const navigate = useNavigate();
 
@@ -35,18 +51,21 @@ function SelectedUserProfile({getUserAnswerQuestionTypeAsync}) {
   }
 
   const handlerQuestions = (e)=>{
+
     const btnName = e.target.name;
 
     if(btnName==="unanswered"){
 
       setLoadAnswered(false);
       localStorage.setItem('answertype', 'unanswered');
+      getUserAnswerQuestionTypeAsync("unanswered");
 
     }
     else{
       
       setLoadAnswered(true);
       localStorage.setItem('answertype', 'answered');
+      getUserAnswerQuestionTypeAsync("answered");
 
     }
   }

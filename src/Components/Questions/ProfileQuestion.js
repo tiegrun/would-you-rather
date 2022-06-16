@@ -64,14 +64,20 @@ function ProfileQuestion({userUnansweredQuestionList, userAnsweredQuestionList, 
       clearTimeout(timer);
     };
     
-  }, [createdQuestions.length])
+  }, [createdQuestions.length]);
+
+  const handleAnswerTypeLocalStorage = () => {
+
+    localStorage.setItem('answertype', userAnswerQuestionType);
+
+  }
 
   if(userAnswerQuestionType ==="unanswered"){
     return ((typeof userUnansweredQuestionList === "string") ? loadingOrEmpty : userUnansweredQuestionList.map(op=>{
       return (
         <ul className="profileQuestionList" key={op.id} >
           <li key={op.optionOneText}>
-            <Link to={`/questions/${op.id}`} className={linkClassName}>
+            <Link to={`/questions/${op.id}`} className={linkClassName} onClick={handleAnswerTypeLocalStorage}>
               Would you rather {op.optionOneText} or {op.optionTwoText} ?
             </Link>
           </li>

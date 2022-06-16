@@ -25,7 +25,7 @@ function AnsweredQuestions({userList, userAnsweredQuestionList, questionList, ge
       getUserAnsweredQuestionsAsync(userAnswered);
 
     }
-  }, [])
+  }, [userList])
 
   useEffect(()=>{
     

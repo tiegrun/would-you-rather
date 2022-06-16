@@ -34,7 +34,9 @@ function QuestionList({userAnswerQuestionType}) {
       
     }
 
-  }, [userAnswerQuestionType, userAnswerType]);
+  }, [userAnswerQuestionType, localStorage.getItem('answertype')]);
+
+  console.log(userAnswerQuestionType, userAnswerType)
 
   
   return (
