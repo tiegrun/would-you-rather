@@ -1,4 +1,6 @@
 import React, {Fragment, useEffect} from 'react';
+import {mapStateToProps, mapDispatchToProps} from '../../Store/storeProps';
+import {connect} from "react-redux";
 import "../../Style/LeaderBoard.css";
 import {useState} from "react";
 import LeaderBoardUserList from "./LeaderBoardUserList";
@@ -75,4 +77,4 @@ function Leaderboard({loggedUser}) {
   )
 }
 
-export default Leaderboard 
+export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard)
