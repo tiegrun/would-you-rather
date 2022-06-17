@@ -36,9 +36,6 @@ function QuestionList({userAnswerQuestionType}) {
 
   }, [userAnswerQuestionType, localStorage.getItem('answertype')]);
 
-  console.log(userAnswerQuestionType, userAnswerType)
-
-  
   return (
     <Routes>
       {!answerType

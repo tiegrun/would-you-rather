@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import SelectUser from "./SelectUser";
 import SelectedUserProfile from "./SelectedUserProfile";
 
-function SelectUserList({userList, getUserListAsync, logInUserAsync, isLoggedAsync, loggedUser}) {
+function SelectUserList({userList, getUserListAsync, logInUserAsync, isLoggedAsync}) {
   
   const [users, setUsers] = useState("Loading");
   const [userLoggedIn, setUserLoggedIn] = useState(false);
