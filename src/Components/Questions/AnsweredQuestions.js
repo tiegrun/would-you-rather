@@ -14,9 +14,11 @@ function AnsweredQuestions({userList, userAnsweredQuestionList, questionList, ge
 
   const idLink = params.question_id;
 
+  const userIdByStorage = localStorage.getItem('userId');
+
   useEffect(()=>{
 
-    if(typeof userList==="string"){
+    if(typeof userList==="string" && userIdByStorage !== ""){
       
       const userAnswered = JSON.parse(localStorage.getItem("answered"));
 
@@ -127,13 +129,8 @@ function AnsweredQuestions({userList, userAnsweredQuestionList, questionList, ge
             }
           })
         :
-          <div className='Section'>
-            <div className='pageHeader'>
-              <h2>Questions</h2>
-            </div>
-            <div className='subSection'>
-              ...Loading
-            </div>
+          <div className='subSection'>
+            <QuestionNavButtons />
           </div>
         }
     </Fragment> 

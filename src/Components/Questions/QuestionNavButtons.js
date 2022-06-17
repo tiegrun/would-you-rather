@@ -1,8 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect, Fragment} from 'react';
+import {mapStateToProps, mapDispatchToProps} from '../../Store/storeProps';
+import {connect} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SelectedUserProfilePage from "../SelectUserComponent/SelectedUserProfilePage";
 
-function QuestionNavButtons() {
+function QuestionNavButtons({loggedUser}) {
+
+  const [loginAgain, setLoginAgain] = useState(true);
+
+  const userIdByStorage = localStorage.getItem('userId');
+  const userIdByRedux = loggedUser[0].id;
+
+  useEffect(()=>{
+
+    if(userIdByStorage === "" || userIdByRedux === undefined){
+
+      setLoginAgain(true)
+
+    }
+    else{
+
+      setLoginAgain(false)
+
+    }
+
+  },[localStorage.getItem('userId'), loggedUser])
 
   let navigate = useNavigate();
 
@@ -14,7 +36,12 @@ function QuestionNavButtons() {
 
   return (
     <div>
-      <div className="btnSection">
+      {loginAgain
+        ?
+          <SelectedUserProfilePage />
+        :
+        <Fragment>
+        <div className="btnSection">
         | <button className="simpleBtn" name={`/`} onClick={handleRoute}>
           Home
         </button> |
@@ -26,8 +53,11 @@ function QuestionNavButtons() {
         </button> |
       </div>
       <SelectedUserProfilePage />
+        </Fragment>
+      
+      }
     </div>
   )
 }
 
-export default QuestionNavButtons
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionNavButtons)
