@@ -49,10 +49,6 @@ function App({isLogged}) {
     }
 }, []);
 
-const renderAppComponent = () => {
-  console.log("yes")
-}
-
   return (
     <BrowserRouter>
       <div className="App">

@@ -83,8 +83,6 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
     }
   }
 
-  console.log(userIdByStorage, userIdByRedux)
-
   return (
     <div className='Section LeaderBoard'>
       
