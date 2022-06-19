@@ -27,6 +27,9 @@ function AnsweredQuestions({userList, userAnsweredQuestionList, questionList, ge
       getUserAnsweredQuestionsAsync(userAnswered);
 
     }
+    else if(userIdByStorage == ""){
+      console.log("userIdByStorage")
+    }
   }, [userList])
 
   useEffect(()=>{

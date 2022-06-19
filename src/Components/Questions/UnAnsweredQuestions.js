@@ -22,7 +22,9 @@ function UnAnsweredQuestions({userList, userUnansweredQuestionList, getUserListA
       
       getUserListAsync();
       getUserUnansweredQuestionsAsync(userUnAnswered);
-
+    }
+    else{
+      console.log(userIdByStorage)
     }
   },[])
 

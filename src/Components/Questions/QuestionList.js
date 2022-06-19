@@ -4,47 +4,67 @@ import {connect} from "react-redux";
 import '../../Style/Questions.css'
 import UnAnsweredQuestions from './UnAnsweredQuestions';
 import AnsweredQuestions from './AnsweredQuestions';
+import FindOutAnsweredOrNot from './FindOutAnsweredOrNot';
 import {Routes, Route } from "react-router-dom";
 // import Error404Page from "../Error404Page";
 
 function QuestionList({userAnswerQuestionType}) {
 
   const [answerType, setAnswerType] = useState();
+  const [findOutAnsweredOrNot, setFindOutAnsweredOrNot] = useState(false); 
 
   const userAnswerType = localStorage.getItem('answertype');
 
   useEffect(()=>{
 
-    if(userAnswerQuestionType==="unanswered"){
+   if(userAnswerType === "answered"){
 
-      if(userAnswerType==="unanswered"){
+    setAnswerType(true)
 
-        setAnswerType(false);
+   }
+   else if(userAnswerType === "unanswered"){
+
+    setAnswerType(false)
+
+   }
+   else{
+
+    setFindOutAnsweredOrNot(true)
+
+   }
+
+  }, [userAnswerQuestionType, localStorage.getItem('answertype')]);
+
+  const findOutAnsweredOrUnanswered = () =>{
+
+
+    if(!findOutAnsweredOrNot){
+
+      if(!answerType){
+
+        return <Route path="/questions/:question_id"  element={<UnAnsweredQuestions/>}/>
 
       }
-      else{
+      else {
 
-        setAnswerType(true);
+        return <Route path="/questions/:question_id"  element={<AnsweredQuestions />}/>
 
       }
     }
     else{
 
-      setAnswerType(true);
+      return <Route path="/questions/:question_id"  element={<FindOutAnsweredOrNot />}/>
       
     }
 
-  }, [userAnswerQuestionType, localStorage.getItem('answertype')]);
+  }
 
   return (
+
     <Routes>
-      {!answerType
-        ? 
-          <Route path="/questions/:question_id"  element={<UnAnsweredQuestions/>}/>
-        :
-          <Route path="/questions/:question_id"  element={<AnsweredQuestions />}/>
-      }
+      {findOutAnsweredOrUnanswered()}
     </Routes>      
+
   )
 }
 
