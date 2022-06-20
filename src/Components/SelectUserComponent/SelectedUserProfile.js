@@ -37,7 +37,7 @@ function SelectedUserProfile({getUserAnswerQuestionTypeAsync, userAnswerQuestion
       }
     }
     
-  },[localStorage.getItem('answertype'), userAnswerQuestionType])
+  },[getAnswerTypeSLocalStorage, userAnswerQuestionType])
 
   const navigate = useNavigate();
 
