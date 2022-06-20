@@ -1,31 +1,54 @@
-import React from 'react';
-import { useNavigate } from "react-router-dom";
+import React, {useState, useEffect, Fragment} from 'react';
+import {mapStateToProps, mapDispatchToProps} from '../Store/storeProps';
+import {connect} from "react-redux";
+import SelectedUserProfilePage from "./SelectUserComponent/SelectedUserProfilePage";
+import QuestionNavButtons from "./Questions/QuestionNavButtons"
 
-function Error404Page() {
+function Error404Page({loggedUser}) {
 
-  let navigate = useNavigate();
+  const [loginAgain, setLoginAgain] = useState(true);
 
-  const toRoute = (e)=>{
-    const path = e.target.name;
+  const userIdByStorage = localStorage.getItem('userId');
 
-    navigate(path);
-  }
+  useEffect(()=>{
+
+    if(userIdByStorage === "" || loggedUser === "No User"){
+
+      setLoginAgain(true)
+
+    }
+    else{
+
+      setLoginAgain(false)
+
+    }
+
+  },[userIdByStorage, loggedUser])
 
   return (
-    <div className='Section LeaderBoard'>
-      <div className='pageHeader'>
-        <h2>This page does not exist</h2>
-      </div>   
-      <div className='btnSection'>
-        <button className='simpleBtn' onClick={toRoute} name={`/`}>Please Sign In</button>
-      </div>
-      <div className='subSection'>
-        <div className="profileQuestionList">
-          <h1 className='err404'>Error 404</h1>
-        </div>
-      </div>
-    </div>
+    <Fragment>
+      {
+        loginAgain
+          ?
+          <SelectedUserProfilePage />
+          :
+            <Fragment>
+              <div className='Section'>
+              <div className='pageHeader'>
+                <h2>This page does not exist</h2>
+              </div>
+              <div className='subSection'>
+                <QuestionNavButtons />
+                <div className="profileQuestionList">
+                  <h1 className='err404'>Error 404</h1>
+                </div>
+              </div>
+            </div>
+          </Fragment> 
+      }
+    </Fragment>
   )
 }
 
-export default Error404Page
+export default connect(mapStateToProps, mapDispatchToProps)(Error404Page)
+

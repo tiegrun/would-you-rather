@@ -19,16 +19,23 @@ function AnsweredQuestions({userList, userAnsweredQuestionList, questionList, ge
   useEffect(()=>{
 
     if(typeof userList==="string" && userIdByStorage !== ""){
-      
-      const userAnswered = JSON.parse(localStorage.getItem("answered"));
 
-      getUserListAsync();
-      getQuestionListAsync();
-      getUserAnsweredQuestionsAsync(userAnswered);
+      const answerTypeByStorage = localStorage.getItem("answered");
 
-    }
-    else if(userIdByStorage == ""){
-      console.log("userIdByStorage")
+      if(answerTypeByStorage !== ""){
+
+        const userAnswered = JSON.parse(answerTypeByStorage);
+
+        getUserListAsync();
+        getQuestionListAsync();
+        getUserAnsweredQuestionsAsync(userAnswered);
+
+      }
+      else{
+
+        localStorage.setItem('userId', '');
+
+      }
     }
   }, [userList])
 

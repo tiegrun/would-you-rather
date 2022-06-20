@@ -18,15 +18,24 @@ function UnAnsweredQuestions({userList, userUnansweredQuestionList, getUserListA
 
     if(typeof userList==="string" && userIdByStorage !== ""){
 
-      const userUnAnswered = JSON.parse(localStorage.getItem("unanswered"));
-      
-      getUserListAsync();
-      getUserUnansweredQuestionsAsync(userUnAnswered);
+      const answerTypeByStorage = localStorage.getItem("unanswered");
+
+      if(answerTypeByStorage !== ""){
+
+        const userUnAnswered = JSON.parse(answerTypeByStorage) ;
+
+        getUserListAsync();
+        getUserUnansweredQuestionsAsync(userUnAnswered);
+
+      }
+      else{
+
+        localStorage.setItem('userId', '');
+        
+      }
     }
-    else{
-      console.log(userIdByStorage)
-    }
-  },[])
+
+  },[userList, userIdByStorage])
 
   return (
     <Fragment>

@@ -39,8 +39,6 @@ function SelectedUserProfile({getUserAnswerQuestionTypeAsync, userAnswerQuestion
     
   },[localStorage.getItem('answertype'), userAnswerQuestionType])
 
-  // console.log(loadAnswered, userAnswerQuestionType, getAnswerTypeSLocalStorage);
-
   const navigate = useNavigate();
 
   const toRoute = (e) =>{
