@@ -38,7 +38,7 @@ function SelectUserList({userList, getUserListAsync, logInUserAsync, isLoggedAsy
       }
     }
      
-  }, [userList, localStorage.getItem('userId')]);
+  }, [userList, selectedUserId]);
 
   const selectedUser = (clickedUser)=>{
 

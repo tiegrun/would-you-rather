@@ -130,12 +130,18 @@ function AnsweredQuestions({userList, userAnsweredQuestionList, questionList, ge
                                 )
                               }  
                             }
+                            else{
+                              return false
+                            }
                         })}
                       </div>
                     </div>
                   </div>
                 </div>
               )
+            }
+            else{
+              return false
             }
           })
         :

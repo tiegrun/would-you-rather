@@ -39,7 +39,6 @@ function QuestionList({userAnswerQuestionType}) {
 
   const findOutAnsweredOrUnanswered = () =>{
 
-
     if(!findOutAnsweredOrNot){
 
       if(!answerType){
@@ -56,23 +55,18 @@ function QuestionList({userAnswerQuestionType}) {
     else{
 
       return (
-
         <Fragment>
           <Route path = {questionPath}  element={<FindOutAnsweredOrNot />}/>
           <Route path = "*"  element={<Error404Page />}/>
         </Fragment>
-      
       )
     }
-
   }
 
   return (
-
     <Routes>
       {findOutAnsweredOrUnanswered()}
     </Routes>      
-
   )
 }
 

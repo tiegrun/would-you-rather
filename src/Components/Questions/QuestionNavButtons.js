@@ -24,7 +24,7 @@ function QuestionNavButtons({loggedUser}) {
 
     }
 
-  },[localStorage.getItem('userId'), loggedUser])
+  },[userIdByRedux, loggedUser, userIdByStorage])
 
   let navigate = useNavigate();
 
@@ -40,21 +40,20 @@ function QuestionNavButtons({loggedUser}) {
         ?
           <SelectedUserProfilePage />
         :
-        <Fragment>
-        <div className="btnSection">
-        | <button className="simpleBtn" name={`/`} onClick={handleRoute}>
-          Home
-        </button> |
-        <button className="simpleBtn" name={`/leaderboard`} onClick={handleRoute}>
-          LeaderBoard
-        </button> |
-        <button className='simpleBtn' name={`/add`} onClick={handleRoute}>
-          Create A New Poll
-        </button> |
-      </div>
-      <SelectedUserProfilePage />
-        </Fragment>
-      
+          <Fragment>
+            <div className="btnSection">
+            | <button className="simpleBtn" name={`/`} onClick={handleRoute}>
+               Home
+              </button> |
+              <button className="simpleBtn" name={`/leaderboard`} onClick={handleRoute}>
+                LeaderBoard
+              </button> |
+              <button className='simpleBtn' name={`/add`} onClick={handleRoute}>
+              Create A New Poll
+              </button> |
+            </div>
+            <SelectedUserProfilePage />
+          </Fragment>
       }
     </div>
   )

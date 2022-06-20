@@ -10,6 +10,7 @@ function FindOutAnsweredOrNot({loggedUser, getQuestionListAsync, questionList, g
   const [loadingOrError, setLoadingOrError] = useState(true)
 
   const getUserIdByLocalStorage = localStorage.getItem('userId');
+  const getAnswerTypeLocalStorage = localStorage.getItem('answertype')
 
   const params = useParams();
 
@@ -91,22 +92,34 @@ function FindOutAnsweredOrNot({loggedUser, getQuestionListAsync, questionList, g
           }  
         ).sort(orderByTimeStamp);
   
-        const answeredQuestions = questionOptionsVotes.filter(options=>{
+        const answeredQuestions = questionOptionsVotes.filter(options => {
   
           if(options.optionOneVotes.includes(loggedUserId) || options.optionTwoVotes.includes(loggedUserId)){
             
-            return options
+            return true
+
+          }
+          else{
+
+            return false
+
           }
         })
   
         const unAnsweredQuestions = questionOptionsVotes.filter(options=>{
+
           if(!options.optionOneVotes.includes(loggedUserId) && !options.optionTwoVotes.includes(loggedUserId)){
             
-            return options
+            return true
             
           }
+          else{
+
+            return false
+
+          }
         })
-  
+
         getUserAnsweredQuestionsAsync(answeredQuestions);
         getUserUnansweredQuestionsAsync(unAnsweredQuestions);
   
@@ -118,49 +131,45 @@ function FindOutAnsweredOrNot({loggedUser, getQuestionListAsync, questionList, g
 
   useEffect(() =>{
 
-    const getAnswerTypeLocalStorage = localStorage.getItem('answertype')
-    
     if(getAnswerTypeLocalStorage !== ""){
 
      window.location.reload();
 
     }
 
-  }, [userAnswerQuestionType, localStorage.getItem('answertype')]);
+  }, [userAnswerQuestionType, getAnswerTypeLocalStorage]);
 
   return (
     
     <Fragment>
-    {
-      loggedUser === "No User"
-        ?
-         <SelectedUserProfilePage />
-        :
-          (
-            loadingOrError 
-              ? 
-                <Fragment>
-                  <h2>
-                    Loading
-                  </h2>
-                </Fragment> 
-              : 
-                <div className='Section'>
-                  <div className='pageHeader'>
-                    <h2>This page does not exist</h2>
-                  </div>
-                  <div className='subSection'>
-                    <QuestionNavButtons />
-                    <div className="profileQuestionList">
-                      <h1 className='err404'>Error 404</h1>
+      {
+        loggedUser === "No User"
+          ?
+            <SelectedUserProfilePage />
+          :
+            (
+              loadingOrError 
+                ? 
+                  <Fragment>
+                    <h2>
+                      Loading
+                    </h2>
+                  </Fragment> 
+                : 
+                  <div className='Section'>
+                    <div className='pageHeader'>
+                      <h2>This page does not exist</h2>
+                    </div>
+                    <div className='subSection'>
+                      <QuestionNavButtons />
+                      <div className="profileQuestionList">
+                        <h1 className='err404'>Error 404</h1>
+                      </div>
                     </div>
                   </div>
-                </div>
-          )
-    }
-      
-    </Fragment>
-                 
+            )
+      }
+    </Fragment>           
   )
 }
 

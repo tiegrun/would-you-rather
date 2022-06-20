@@ -29,7 +29,7 @@ function AddQuestions({addQuestionAsync, loggedUser}) {
 
     }
 
-  },[localStorage.getItem('userId'), loggedUser])
+  },[userIdByStorage, loggedUser, userIdByRedux])
 
   let navigate = useNavigate();
 

@@ -27,7 +27,7 @@ function Leaderboard({loggedUser}) {
 
     }
 
-  },[localStorage.getItem('userId'), loggedUser])
+  },[userIdByStorage, loggedUser, userIdByRedux])
 
   let navigate = useNavigate();
 
@@ -71,8 +71,6 @@ function Leaderboard({loggedUser}) {
             </div>
           </Fragment>
       }
-      
-      
     </div>
   )
 }

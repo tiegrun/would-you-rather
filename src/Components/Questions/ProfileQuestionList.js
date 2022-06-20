@@ -16,13 +16,13 @@ function ProfileQuestionList({loggedUser, questionList,  getQuestionListAsync, g
 
     }
 
-  },[isUpdateQuestionList])
+  },[isUpdateQuestionList, getQuestionListAsync])
 
   useEffect(()=>{
 
     getQuestionListAsync()
     
-  }, [createdQuestions.length])
+  }, [createdQuestions.length, getQuestionListAsync])
 
   useEffect(() => {
 
@@ -76,15 +76,24 @@ function ProfileQuestionList({loggedUser, questionList,  getQuestionListAsync, g
 
         if(options.optionOneVotes.includes(loggedUserId) || options.optionTwoVotes.includes(loggedUserId)){
           
-          return options
+          return true
+        }
+        else{
+          return false
         }
       })
 
       const unAnsweredQuestions = questionOptionsVotes.filter(options=>{
+
         if(!options.optionOneVotes.includes(loggedUserId) && !options.optionTwoVotes.includes(loggedUserId)){
           
-          return options
+          return true
           
+        }
+        else{
+
+          return false
+
         }
       })
 

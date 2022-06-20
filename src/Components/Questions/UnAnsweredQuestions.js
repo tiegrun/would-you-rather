@@ -39,7 +39,7 @@ function UnAnsweredQuestions({userList, userUnansweredQuestionList, getUserListA
 
   return (
     <Fragment>
-      {typeof userUnansweredQuestionList!=="string" && typeof userList!=="string" 
+      {typeof userUnansweredQuestionList !== "string" && typeof userList !== "string" 
         ?   
           userUnansweredQuestionList.map(question=>{
           
@@ -77,7 +77,9 @@ function UnAnsweredQuestions({userList, userUnansweredQuestionList, getUserListA
                 )
               }
               else{
-                <div>Empty Question List</div>
+
+               return <div key={question.id}>Empty Question List</div>
+
               }
             })
           :

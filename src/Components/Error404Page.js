@@ -30,7 +30,7 @@ function Error404Page({loggedUser}) {
       {
         loginAgain
           ?
-          <SelectedUserProfilePage />
+            <SelectedUserProfilePage />
           :
             <Fragment>
               <div className='Section'>
