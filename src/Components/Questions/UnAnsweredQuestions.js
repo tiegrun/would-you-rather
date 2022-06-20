@@ -78,7 +78,7 @@ function UnAnsweredQuestions({userList, userUnansweredQuestionList, getUserListA
               }
               else{
 
-               return <div key={question.id}>Empty Question List</div>
+                return false
 
               }
             })
